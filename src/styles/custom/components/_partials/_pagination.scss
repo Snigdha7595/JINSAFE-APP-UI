@@ -1,0 +1,102 @@
+@use "../../core/mixins" as *;
+@use "../../core/variables" as *;
+
+.pagination {
+  &_container {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include flex-direction(column,vertical);
+    padding: 10px 20px;
+
+    @include mq(tablet) {
+      flex-direction:row;
+    }
+  }
+  &_wrapper {
+    max-width: 100%;
+    position: relative;
+  }
+  padding: 5px;
+  overflow-x: auto;
+  margin-left: 50px;
+  margin-right: 40px;
+
+  .page-item {
+    &:first-child {
+      position: absolute;
+      left: 0;
+      z-index: 10;
+      background: var(--orange);
+
+      button {
+        background: transparent;
+        border: 0;
+        @include fontBase(var(--fontMedium));
+        font-size: $font14;
+        box-shadow: none;
+        width: auto;
+        &:hover {
+          color: var(--themeBg3);
+          @include transition(all 0.3s ease-in-out);
+        }
+      }
+    }
+    &:last-child {
+      position: absolute;
+      right: 0;
+      z-index: 10;
+      background: var(--orange);
+
+      button {
+        background: transparent;
+        border: 0;
+        @include fontBase(var(--fontMedium));
+        font-size: $font14;
+        box-shadow: none;
+        width: auto;
+      }
+    }
+    button {
+      @include size(30px);
+      // @include border-radius(30px);
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      margin-right: 5px;
+      min-width: 30px;
+      @include fontBase(var(--fontMedium));
+      font-size: $font14;
+      color: var(--themeClr4);
+      box-shadow: none !important;
+      border: 1px solid var(--darkGrey);
+      &:hover {
+        color: var(--themeBg3);
+        @include transition(all 0.3s ease-in-out);
+      }
+      &.active {
+        color: var(--white);
+        @include transition(all 0.3s ease-in-out);
+        background: var(--darkGrey);
+      }
+    }
+  }
+}
+
+.recordsWrapper {
+  @include flexbox();
+  @include align-items(center);
+  // @include justify-content(center);
+  margin-bottom:10px;
+  &__list {
+    background:none;
+    border:1px solid var(--darkGrey);
+    margin-right: 10px;
+    padding: 8px;
+    border-radius:5px;
+       color: var(--darkGrey);
+  }
+  &__value {
+    color: var(--darkGrey);
+    
+  }
+}

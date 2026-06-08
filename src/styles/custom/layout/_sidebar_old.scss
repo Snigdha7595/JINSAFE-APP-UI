@@ -1,0 +1,115 @@
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+.adminSidebar {
+  width: 30%;
+  background-color: var(--themePrimary);
+  transition: all 0.3s ease;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  height: 100%;
+  padding: 30px;
+  overflow: scroll;
+  @include mq(tablet-wide) {
+    transform: translateX(0);
+    max-width: 312px;
+  }
+  &__head {
+    @include flexbox();
+    @include align-items(end);
+    @include justify-content(space-between);
+    padding-bottom: 20px;
+    &--logo {
+      .u-image {
+        width: 120px;
+      }
+    }
+    &--name {
+      color: var(--grey);
+      font-size: var(--fontSize20);
+    }
+  }
+  &__user {
+    @include flexbox();
+    @include align-items(center);
+    border-top: 1px solid var(--grey4);
+    border-bottom: 1px solid var(--grey4);
+    padding: 15px 0px;
+    &--media {
+      .u-image {
+        width: 50px;
+        margin-right: 30px;
+      }
+    }
+    &--title {
+      color: var(--white);
+      font-size: var(--fontSize16);
+    }
+  }
+  &__infoWrapper {
+    @include flexbox();
+    gap: 10px;
+    // @include align-items(center);
+    // @include justify-content(center);
+    @include flex-direction(column, vertical);
+    margin-top: 20px;
+    .infoBox {
+      @include flexbox();
+      @include align-items(center);
+      width: 100%;
+      padding: 10px 25px;
+      cursor: pointer;
+      &__icon {
+        margin-right: 20px;
+        .u-image {
+          width: 30px;
+        }
+      }
+      &.active {
+        background: var(--orange);
+        border-radius: 5px;
+        .infoBox__icon {
+          .u-image {
+            width: 25px;
+          }
+        }
+      }
+      &__title {
+        color: var(--white);
+        font-size: var(--fontSize16);
+      }
+    }
+  }
+  &__listWrapper {
+    .lisBox {
+      @include flexbox();
+      @include align-items(center);
+      width: 100%;
+      padding: 10px 25px;
+      cursor: pointer;
+      position: relative;
+      &__icon {
+        margin-right: 20px;
+        .u-image {
+          width: 30px;
+        }
+      }
+      &__title {
+        color: var(--white);
+        font-size: var(--fontSize16);
+      }
+      &__arrow {
+        position: absolute;
+        right: 0;
+        .u-image {
+          width: 10px;
+        }
+      }
+    }
+  }
+
+  
+}
+

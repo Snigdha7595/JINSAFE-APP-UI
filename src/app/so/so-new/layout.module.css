@@ -1,0 +1,62 @@
+/* src/app/so/so-new/layout.module.css */
+/* .layoutContainer {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+} */
+ .layoutContainer {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  align-items: flex-start; /* ← add this */
+}
+
+.mainContent {
+  flex: 1 1 0%;
+  min-width: 0;
+  transition: all 0.35s ease;
+  overflow-x: clip; /* Hide horizontal overflow that causes the scrollbar */
+}
+
+.drawerWrapper {
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: flex 0.35s ease, width 0.35s ease;
+  position: sticky;
+  top: 0;           /* ← change from 70px to 0 */
+  height: 100vh;    /* ← change from calc(100vh - 70px) to 100vh */
+  z-index: 100;
+}
+
+.drawerOpen {
+  flex: 0 0 380px;
+  width: 380px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .drawerOpen {
+    flex: 0 0 420px;
+    width: 420px;
+  }
+}
+
+/* Mobile - full screen */
+@media (max-width: 768px) {
+  .drawerWrapper {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 10000;
+    flex: none !important;
+  }
+  .drawerOpen {
+    width: 100vw;
+    flex: none;
+  }
+}

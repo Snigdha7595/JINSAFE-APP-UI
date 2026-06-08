@@ -1,0 +1,156 @@
+@use "../../core/mixins" as *;
+@use "../../core/variables" as *;
+
+.c-accordion {
+  margin-bottom: 20px;
+
+  &__head {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+    background: var(--themePrimary);
+    padding: 10px;
+
+    &--title {
+      color: var(--white);
+      font-size: var(--fontSize16);
+    }
+
+    &--btn {
+      background: none;
+      border: none;
+      transition: 0.3 all ease-in-out;
+    }
+  }
+}
+
+.filters {
+  background: var(--white);
+  padding: 20px;
+}
+
+.uploadWrapper {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  @include flex-direction(column,vertical);
+  @include mq(tablet-small) {
+    flex-direction:row;
+  }
+
+  &__inputField {
+   width:100%;
+    label {
+      color: var(--darGrey);
+      line-height: 1.6;
+      @include fontBase(var(--fontMedium));
+      margin-bottom: 3px;
+      font-size: $font14;
+      font-weight: 300;
+    }
+
+    input {
+      @include border-radius(5px);
+      height: 40px;
+      padding: 6px 5px;
+         width:100%;
+      border: 1px solid var(--themeBorder2);
+    }
+  }
+  &__btn {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    margin-top: 25px;
+    gap: 10px;
+    width:100%;
+    &--uploadBtn {
+      background: var(--orange);
+      border: none;
+      padding: 8px 12px;
+      .u-image {
+        min-width: 17px;
+      }
+    }
+    &--imgBtn {
+      border: none;
+      background: var(--grey2);
+      padding: 8px 5px;
+     min-width: 17px;
+     color:var(--black)
+    }
+    &--deleteBtn {
+      background: var(--white);
+      border: 1px solid var(--darkGrey);
+      padding: 8px 10px;
+      .u-image {
+        // width: 50px;
+        min-width: 15px;
+      }
+    }
+  }
+
+  &.v2 {
+    .uploadWrapper__inputField {
+      max-width: 100%;
+    }
+
+    .uploadWrapper__btn {
+    }
+  }
+}
+
+.form-upload {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column, vertical);
+  .uploadSection {
+    @include flexbox();
+    @include flex-direction(column, vertical);
+    gap: 15px;
+    .uploader {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      input {
+        border: 1px solid #636466;
+        padding: 5px;
+        width:70%;
+        @include mq(tablet) {
+          width:100%;
+        }
+      }
+      .uploadBtn {
+        background: var(--orange);
+        padding: 9px;
+        border: none;
+        border-radius: 5px;
+        margin-left: 10px;
+        .u-image {
+          width: 20px;
+        }
+      }
+    }
+  }
+
+  .ViewSection {
+    @include flexbox();
+    @include align-items(center);
+    .imageBox {
+      .u-image {
+        width: 100%;
+      }
+      margin-right: 10px;
+    }
+    .deleteBtn {
+      border: 3px solid var(--orange);
+      background: var(--white);
+      padding: 20px;
+      .u-image {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-05-31 001901.png",
+  "extracted_text": "Observer Name: Ashutosh\n\nSO Date: 26/05/2026\n\nUnit: Barbil\n\nDepartment: Information Technology\n\nHOD Name: Gajanan V Ashtekar\n\nVisited Section: Software Development,\n\nDuration: 2 Hours\n\nDuring the safety observation, multiple workstation\n\ncables were found hanging below employee desks.\n\nSome employees were working with overloaded\n\nextension boards which may lead to electrical\n\nhazards. Immediate cable management and proper\n\npower distribution were recommended.\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Barbil",
+    "departmentDisplay": "Information Technology",
+    "sectionDisplay": "Software Development,",
+    "hod": "Gajanan V Ashtekar",
+    "nameObserver": "Ashutosh",
+    "siDate": "26/05/2026",
+    "duration": "2 Hours"
+  }
+}

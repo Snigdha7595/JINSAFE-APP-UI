@@ -1,0 +1,149 @@
+@use "../../../core/mixins" as *;
+@use "../../../core/variables" as *;
+.admin-table {
+  &.d1 {
+    border: 1px solid var(--themeBorder1);
+    @include border-radius(15px 15px 0 0);
+    .table {
+      th {
+        background-color: var(--themeBg1);
+        padding: 12px 20px;
+        font-size: $font14;
+        @include fontBase(var(--fontMedium));
+        color: var(--themeClr1);
+        line-height: 1.3;
+        margin-bottom: 0;
+        white-space: nowrap;
+        vertical-align: middle;
+        @include mq(tablet) {
+          font-size: $font14;
+        }
+
+        @include mq(desktop-min) {
+          font-size: $font16;
+        }
+
+        &:first-child {
+          @include border-radius(15px 0 0 0);
+        }
+        &:last-child {
+          @include border-radius(0 15px 0 0);
+        }
+      }
+      tbody {
+        border: 1px solid var(--grey);
+
+        tr + tr {
+          border-top: 1px solid var(--themeBorder1);
+        }
+      }
+      tr {
+        cursor: pointer;
+      }
+      tr.highlighter {
+        &:hover {
+          td {
+            background: var(--themeClr2);
+            cursor: default;
+          }
+        }
+        td {
+          background: var(--themeClr2);
+          cursor: default;
+          color: var(--white);
+        }
+      }
+      tr.light-highlighter {
+        border-bottom: 1px solid var(--white);
+        &:hover {
+          td {
+            background: var(--themeBg1);
+            cursor: default;
+          }
+        }
+        td {
+          background: var(--themeBg1);
+          cursor: default;
+          color: var(--themeClr1);
+        }
+      }
+      td {
+        padding: 12px 20px;
+        font-size: $font14;
+        @include fontBase(var(--fontMedium));
+        color: var(--themeTextSecondary);
+        background: var(--whiteBg);
+        line-height: 1.3;
+        border: none;
+        // white-space: nowrap;
+        vertical-align: middle;
+
+        @include mq(tablet) {
+          font-size: $font14;
+        }
+
+        @include mq(desktop-min) {
+          font-size: $font16;
+        }
+      }
+    }
+  }
+  .s-no {
+    width: 40px !important;
+    min-width: auto !important;
+  }
+  .value-xs {
+    width: 50px !important;
+    min-width: auto !important;
+  }
+  .value-sm {
+    width: 90px !important;
+    min-width: auto !important;
+  }
+  .value-md {
+    width: 120px !important;
+    min-width: auto !important;
+  }
+  .value-lg {
+    width: 150px !important;
+    min-width: auto !important;
+  }
+  .value-xl {
+    width: 180px !important;
+    min-width: auto !important;
+  }
+}
+
+.table-action {
+  @include flexbox;
+  @include align-items(center);
+  background-color: transparent;
+  // @include justify-content(space-around);
+
+  &_icon {
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    &.inactive {
+      opacity: 0.5;
+      filter: grayscale(1);
+      -webkit-filter: grayscale(1);
+      cursor: not-allowed;
+    }
+
+    + .table-action_icon {
+      margin-left: 20px;
+    }
+    &:first-child{
+      padding: 0px;
+    }
+
+    svg {
+      @include size(20px);
+      background-color: transparent;
+    }
+  }
+}

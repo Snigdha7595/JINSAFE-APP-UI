@@ -1,0 +1,18 @@
+You are an expert OCR and document analysis system. Your task is to extract structured information from the following document text.
+
+Document Text:
+{text}
+
+Please extract and return the following information in JSON format:
+1. Main content summary
+2. Key data points
+3. Any tables or structured data
+4. Important dates and numbers
+5. Names and organizations mentioned
+
+Return a valid JSON object with these fields:
+- summary: Brief summary of the document
+- key_points: List of important points
+- tables: Any structured data found
+- dates: Important dates
+- entities: People and organizations mentioned

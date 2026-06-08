@@ -1,0 +1,92 @@
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+.admin-header {
+  background-color: var(--light-grey);
+  height: 75px;
+  border-bottom: 1px solid var(--white);
+  @include box-shadow(0 4px 50px 0 rgba(var(--baseBlack), 0.05));
+  width: inherit;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: 0 20px;
+  position: fixed;
+  z-index: 99;
+  // @include mq(tablet) {
+  //     height: 100px;
+  // }
+
+  &_ls, &_rs {
+    @include flexbox;
+    &--role {
+      @include flexbox;
+      .option {
+        background: none;
+        border: none;
+        color: var(--grey);
+        &__value {
+          background: none;
+        }
+      }
+    }
+    &--user {
+      margin-left: 30px;
+      .title {
+        margin-left: 10px;
+      }
+      .user-option {
+        background:none;
+        margin-left:10px;
+        border:none;
+      }
+    }
+  }
+
+
+  &_icons {
+    @include flexbox;
+    @include align-items(center);
+
+    &-item {
+      @include size(36px);
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+      @include border-radius(50%);
+      background-color: var(--themeBg1);
+      + .admin-header_icons-item {
+        margin-left: 10px;
+        @include mq(phone-small) {
+          margin-left: 10px;
+        }
+        @include mq(phone) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  &_intro-line {
+    border-left: 2px solid var(--themeBorder1);
+    padding-left: 25px;
+    margin-left: 25px;
+    @include flexbox;
+    @include align-items(center);
+
+    .heading {
+      @include fontBase(var(--fontSemiBold));
+      text-transform: uppercase;
+      font-size: $font16;
+      margin-bottom: 0;
+
+      @include mq(tablet) {
+        font-size: $font18;
+      }
+
+      @include mq(desktop-min) {
+        font-size: $font22;
+      }
+    }
+  }
+}

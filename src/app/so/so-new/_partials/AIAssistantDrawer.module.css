@@ -1,0 +1,413 @@
+/* ── Header ────────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aiAvatarLg {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d9e75 0%, #185fa5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.headerSub {
+  font-size: 11px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1d9e75;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.iconBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: background 0.15s, color 0.15s;
+}
+
+.iconBtn:hover {
+  background: #f0f0f0;
+  color: #111827;
+}
+
+/* ── Chat area ─────────────────────────────────────────────────────────────── */
+.chatArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+.chatArea::-webkit-scrollbar        { width: 4px; }
+.chatArea::-webkit-scrollbar-track  { background: transparent; }
+.chatArea::-webkit-scrollbar-thumb  { background: #e0e0e0; border-radius: 4px; }
+.chatArea::-webkit-scrollbar-thumb:hover { background: #c0c0c0; }
+
+/* ── Welcome block ─────────────────────────────────────────────────────────── */
+.welcomeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 8px 8px;
+  animation: fadeUp 0.4s ease;
+}
+
+.welcomeIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1d9e75 0%, #185fa5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.welcomeTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.welcomeDesc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.chip {
+  font-size: 12px;
+  font-family: inherit;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: #f9f9f9;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: #e6f7f1;
+  border-color: #1d9e75;
+  color: #0f6e56;
+}
+
+/* ── Message rows ──────────────────────────────────────────────────────────── */
+.msgRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  animation: fadeUp 0.2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.aiRow  { flex-direction: row; }
+.userRow { flex-direction: row-reverse; }
+
+.aiAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d9e75, #185fa5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.userAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0eeff;
+  color: #185fa5;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bubbleWrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+}
+
+.bubble {
+  padding: 10px 13px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  border-radius: 14px;
+  word-break: break-word;
+}
+
+.bubble ul  { margin: 4px 0 4px 16px; padding: 0; }
+.bubble li  { margin-bottom: 2px; }
+.bubble code {
+  background: rgba(0,0,0,0.07);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+.bubble strong { font-weight: 600; }
+
+.aiBubble {
+  background: #f4f4f5;
+  color: #111827;
+  border-radius: 4px 14px 14px 14px;
+  border: 1px solid #ececec;
+}
+
+.userBubble {
+  background: #1d9e75;
+  color: #ffffff;
+  border-radius: 14px 4px 14px 14px;
+}
+
+.bubbleMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.metaLeft  { justify-content: flex-start; }
+.metaRight { justify-content: flex-end; }
+
+.timestamp {
+  font-size: 10.5px;
+  color: #9ca3af;
+}
+
+.microBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.microBtn:hover {
+  color: #374151;
+  background: #f0f0f0;
+}
+
+/* ── Typing indicator ──────────────────────────────────────────────────────── */
+.typingRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 0.2s ease;
+}
+
+.typingBubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  background: #f4f4f5;
+  border: 1px solid #ececec;
+  border-radius: 4px 14px 14px 14px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9ca3af;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0);    opacity: 0.4; }
+  40%            { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ────────────────────────────────────────────────────────────── */
+.inputArea {
+  border-top: 1px solid #f0f0f0;
+  padding: 12px 14px 14px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.inputBox {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  background: #f7f7f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 8px 10px 8px 14px;
+  transition: border-color 0.15s;
+}
+
+.inputBox:focus-within {
+  border-color: #1d9e75;
+  background: #ffffff;
+}
+
+.textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #111827;
+  resize: none;
+  outline: none;
+  min-height: 24px;
+  max-height: 120px;
+  line-height: 1.55;
+  padding: 2px 0;
+}
+
+.textarea::placeholder { color: #9ca3af; }
+.textarea:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.inputActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.attachBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  transition: background 0.15s, color 0.15s;
+}
+
+.attachBtn:hover:not(:disabled) { background: #f0f0f0; color: #374151; }
+.attachBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.sendBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 10px;
+  background: #1d9e75;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.sendBtn:hover:not(:disabled) { background: #0f6e56; transform: scale(1.05); }
+.sendBtn:active:not(:disabled) { transform: scale(0.96); }
+.sendBtn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.inputFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 7px;
+  padding: 0 2px;
+}
+
+.hint {
+  font-size: 10.5px;
+  color: #c0c0c0;
+}
+
+.charCount {
+  font-size: 10.5px;
+  color: #9ca3af;
+}
+
+.hiddenInput {
+  display: none;
+}

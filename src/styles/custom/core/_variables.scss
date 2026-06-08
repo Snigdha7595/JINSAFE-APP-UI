@@ -1,0 +1,218 @@
+body {
+  --widthMedia1920: 1728px;
+  --widthMedia1536: 1280px;
+  --widthMedia1024: 1140px;
+  --baseBlack: 0, 0, 0;
+  --baseWhite: 255, 255, 255;
+  --baseGrey: 235, 238, 245;
+  --black: rgb(var(--baseBlack));
+  --white: rgba(var(--baseWhite));
+  --whiteLight: rgba(255, 255, 255, 0.6);
+  --red: #FF3B30;
+  --themePrimary: #446181;
+  --orange: #F47920;
+  --green: #4FB748;
+  --grey2: #D9D9D9;
+--darkGrey: #636466;
+  --light-grey: #F4F2EE;
+  --light-grey2: #dbd5d5;
+  --light-blue: #D4DDE8;
+  --twilightBlue: #446183;
+
+
+  --themeBorder1: #636466;
+  --themeBorder2: #C9C7C3;
+
+  --font-primary: 'Noto Sans';
+  --font-secondary: 'Roboto';
+  --fontThin: 100;
+  --fontLight: 300;
+  --fontRegular: normal;
+  --fontMedium: 500;
+  --fontSemiBold: 600;
+  --fontBold: bold;
+  --fontBolder: 900;
+
+  --fontSize10: 10px;
+  --fontSize12: 12px;
+  --fontSize14: 14px;
+  --fontSize13: 13px;
+  --fontSize15: 15px;
+  --fontSize16: 16px;
+  --fontSize18: 18px;
+  --fontSize20: 20px;
+  --fontSize22: 22px;
+  --fontSize24: 24px;
+  --fontSize25: 25px;
+  --fontSize26: 26px;
+  --fontSize28: 28px;
+  --fontSize30: 30px;
+  --fontSize32: 32px;
+  --fontSize34: 34px;
+  --fontSize36: 36px;
+  --fontSize40: 40px;
+  --fontSize45: 45px;
+  --fontSize46: 46px;
+  --fontSize50: 50px;
+  --fontSize52: 52px;
+  --fontSize60: 60px;
+  --fontSize62: 62px;
+  --fontSize68: 68px;
+  --fontSize72: 72px;
+  --fontSize80: 80px;
+  --fontSize100: 100px;
+}
+
+$font10: var(--fontSize10);
+$font12: var(--fontSize12);
+$font13: var(--fontSize13);
+$font14: var(--fontSize14);
+$font15: var(--fontSize15);
+$font16: var(--fontSize16);
+$font18: var(--fontSize18);
+$font20: var(--fontSize20);
+$font22: var(--fontSize22);
+$font24: var(--fontSize24);
+$font25: var(--fontSize25);
+$font26: var(--fontSize26);
+$font28: var(--fontSize28);
+$font30: var(--fontSize30);
+$font32: var(--fontSize32);
+$font34: var(--fontSize34);
+$font36: var(--fontSize36);
+$font40: var(--fontSize40);
+$font42: var(--fontSize42);
+$font45: var(--fontSize45);
+$font46: var(--fontSize46);
+$font52: var(--fontSize52);
+$font50: var(--fontSize50);
+$font60: var(--fontSize60);
+$font62: var(--fontSize62);
+$font68: var(--fontSize68);
+$font72: var(--fontSize72);
+$font80: var(--fontSize80);
+$font100: var(--fontSize100);
+$subPath: 'portal'; //newnilpportal || portal
+
+.font_decrease_1 {
+  --fontSize10: 9px;
+  --fontSize12: 11px;
+  --fontSize14: 13px;
+  --fontSize15: 14px;
+  --fontSize16: 15px;
+  --fontSize18: 17px;
+  --fontSize20: 19px;
+  --fontSize22: 21px;
+  --fontSize24: 23px;
+  --fontSize25: 24px;
+  --fontSize26: 25px;
+  --fontSize28: 27px;
+  --fontSize30: 29px;
+  --fontSize32: 31px;
+  --fontSize34: 33px;
+  --fontSize36: 35px;
+  --fontSize40: 39px;
+  --fontSize45: 44px;
+  --fontSize46: 45px;
+  --fontSize52: 51px;
+  --fontSize62: 61px;
+  --fontSize68: 67px;
+  --fontSize72: 71px;
+  --fontSize80: 79px;
+}
+.font_decrease_2 {
+  --fontSize10: 8px;
+  --fontSize12: 10px;
+  --fontSize14: 12px;
+  --fontSize15: 13px;
+  --fontSize16: 14px;
+  --fontSize18: 16px;
+  --fontSize20: 18px;
+  --fontSize22: 20px;
+  --fontSize24: 22px;
+  --fontSize25: 23px;
+  --fontSize26: 24px;
+  --fontSize28: 26px;
+  --fontSize30: 28px;
+  --fontSize32: 30px;
+  --fontSize34: 32px;
+  --fontSize36: 34px;
+  --fontSize40: 38px;
+  --fontSize45: 43px;
+  --fontSize46: 44px;
+  --fontSize52: 50px;
+  --fontSize62: 60px;
+  --fontSize68: 66px;
+  --fontSize72: 70px;
+  --fontSize80: 78px;
+}
+.font_increase_1 {
+  --fontSize10: 11px;
+  --fontSize12: 13px;
+  --fontSize14: 15px;
+  --fontSize15: 16px;
+  --fontSize16: 17px;
+  --fontSize18: 19px;
+  --fontSize20: 21px;
+  --fontSize22: 23px;
+  --fontSize24: 25px;
+  --fontSize25: 26px;
+  --fontSize26: 27px;
+  --fontSize28: 29px;
+  --fontSize30: 31px;
+  --fontSize32: 33px;
+  --fontSize34: 35px;
+  --fontSize36: 37px;
+  --fontSize40: 41px;
+  --fontSize45: 46px;
+  --fontSize46: 47px;
+  --fontSize52: 53px;
+  --fontSize62: 63px;
+  --fontSize68: 69px;
+  --fontSize72: 73px;
+  --fontSize80: 81px;
+}
+.font_increase_2 {
+  --fontSize10: 12px;
+  --fontSize12: 14px;
+  --fontSize14: 16px;
+  --fontSize15: 17px;
+  --fontSize16: 18px;
+  --fontSize18: 20px;
+  --fontSize20: 22px;
+  --fontSize22: 24px;
+  --fontSize24: 26px;
+  --fontSize25: 27px;
+  --fontSize26: 28px;
+  --fontSize28: 30px;
+  --fontSize30: 32px;
+  --fontSize32: 34px;
+  --fontSize34: 36px;
+  --fontSize36: 38px;
+  --fontSize40: 42px;
+  --fontSize45: 47px;
+  --fontSize46: 48px;
+  --fontSize52: 54px;
+  --fontSize62: 64px;
+  --fontSize68: 70px;
+  --fontSize72: 74px;
+  --fontSize80: 82px;
+}
+
+body .theme2 {
+  --themeBase: var(--white);
+  --themeRightPanelBg: #efecff;
+  --themeBg1: #52459f;
+  --themeBg2: #dfdbf4;
+  --themeBg3: #efecfd;
+  --themeBg4: #f7f7f7;
+  --themeBg5: #ececf0;
+  --themeClr1: #111136;
+  --themeClr2: #a7b5c5;
+  --themeClr3: #9a98a3;
+  --themeClr4: #030303;
+  --themeClr5: #fd532a;
+  --themeClr6: #5144a2;
+
+  --themeBorder1: #e5e5f4;
+}

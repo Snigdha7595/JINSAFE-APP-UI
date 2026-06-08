@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 133859.png",
+  "extracted_text": "Observer Name: Ritik\nSO Date: 30/05/2026\nUnit: Barbil\nDepartment: Liaison\nHOD Name:\n\nVisited Section:\n\nDuration: 45 Minutes\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Barbil",
+    "departmentDisplay": "Liaison",
+    "sectionDisplay": ":",
+    "hod": ":",
+    "nameObserver": "Ritik",
+    "siDate": "30/05/2026",
+    "duration": "45 Minutes"
+  }
+}

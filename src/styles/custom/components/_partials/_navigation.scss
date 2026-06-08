@@ -1,0 +1,213 @@
+@use "../../core/mixins" as *;
+@use "../../core/variables" as *;
+
+.admin-navigation {
+  $self: &;
+
+  &_1 {
+    @include flexbox;
+    @include flex-direction(column, vertical);
+    margin-top: 20px;
+    overflow-y: auto;
+    // overflow-x: hidden;
+    height: calc(100vh - 160px);
+    padding: 0 10px;
+    // overflow-y: hidden;
+    overflow-y: auto;
+    appearance: none;
+    scrollbar-width: none;
+
+    #{$self} {
+      &_list {
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 4px;
+        transition:all 0.5s ease-in-out;
+        .sidebar-content {
+          display: none;
+        }
+
+        &_arrow {
+          position: absolute;
+          right: 0;
+          @include size(40px);
+          @include flexbox;
+          @include align-items(center);
+          @include justify-content(center);
+          top: 5px;
+          z-index: 100;
+          @include transition(all 0.3s ease);
+          svg {
+            @include size(20px);
+          }
+        }
+
+        &:hover {
+          > #{$self}_list_arrow {
+            svg,
+            svg * {
+              fill: var(--white);
+            }
+          }
+          > #{$self}_item {
+            background-color: var(--themeBg1);
+            color: var(--white);
+            #{$self}_item {
+              &_icon {
+                svg,
+                svg * {
+                  fill: var(--white);
+                }
+              }
+              &_label {
+                color: var(--white);
+              }
+            }
+          }
+        }
+
+         
+        &.active {
+          > #{$self}_list_arrow {
+            svg,
+            svg * {
+              fill: var(--white);
+            }
+          }
+          > #{$self}_item {
+            background-color: var(--themeBg2);
+            color: var(--white);
+            #{$self}_item {
+              &_icon {
+                svg,
+                svg * {
+                  fill: var(--white);
+                }
+              }
+              &_label {
+                color: var(--white);
+              }
+            }
+          }
+        }
+
+        &.open {
+          .admin-navigation_list_arrow {
+            @include rotate(90);
+          }
+          .sidebar-content {
+            display: block;
+            margin-left: 20px;
+            #{$self}_item {
+              background-color: transparent;
+              color: var(--white);
+              &:hover {
+                #{$self}_item_label {
+                  color: var(--themeBg3);
+                }
+              }
+
+              #{$self}_item_label {
+                &__active {
+                  color: var(--white);
+                }
+              }
+            }
+            #{$self}_item_label {
+              font-size: $font14;
+              font-weight: var(--fontRegular);
+            }
+          }
+        }
+      }
+      &_item {
+        padding: 7px;
+        @include flexbox;
+        @include align-items(center);
+        position: relative;
+        color: var(--white);
+        @include border-radius(10px);
+        margin-bottom:10px;
+
+        @include mq(desktop-wide) {
+          padding: 10px 20px;
+        }
+
+        &_icon {
+          @include size(25px);
+          @include flexbox;
+          svg {
+            @include size(100%);
+          }
+          svg,
+          svg * {
+            fill: var(--themeClr2);
+            @include transition(all 0.3s ease);
+          }
+          @include mq(desktop-wide) {
+              @include size(30px);
+          }
+        }
+        &_label {
+          margin-left: 10px;
+          font-size: $font15;
+          @include fontBase(var(--fontBold));
+          color: var(--white);
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out 0.2s;
+        }
+
+        &:hover,
+        &.active {
+          background-color: var(--orange) !important;
+          color: var(--white);
+          #{$self}_item {
+            &_icon {
+              svg,
+              svg * {
+                fill: var(--white);
+              }
+            }
+            &_label {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_2 {
+    #{$self} {
+      &_item {
+        @include flexbox;
+        position: relative;
+        padding: 8px 10px;
+        width: 100%;
+        cursor: pointer;
+        @include transition(all 0.3s ease);
+
+        &:hover {
+          background-color: var(--themeBg1);
+
+        }
+
+        &_icon {
+          width: 20px;
+          margin-right: 12px;
+          img {
+            @include size(20px);
+          }
+          svg,
+          svg * {
+            @include transition(all 0.3s ease);
+          }
+        }
+
+        + .admin-navigation_item {
+          border-top: 1px solid var(--themeBorder1);
+        }
+      }
+    }
+  }
+}

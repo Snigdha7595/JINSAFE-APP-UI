@@ -1,0 +1,32 @@
+@use "../../../core/mixins" as *;
+@use "../../../core/variables" as *;
+.hw {
+  $self: &;
+  &.d5 {
+    #{$self} {
+      &__title {
+        color: var(--themeClr1);
+        line-height: 1.2;
+        font-size: $font18;
+        @include fontBase(var(--fontMedium));
+
+        @include mq(tablet) {
+          font-size: $font20;
+        }
+
+        @include mq(desktop-wide) {
+          font-size: $font24;
+        }
+      }
+    }
+  }
+  &.semi-bold{
+    #{$self} {
+      &__title {
+        @include fontBase(var(--fontSemiBold));
+
+      }
+    }
+
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 131915.png",
+  "extracted_text": "Example 1\nObserver Name: Ashutosh Sahu\n\nA safety observation was conducted at the Angul unit under the Utility department. The inspection was\ncarried out in the Conveyor Maintenance Area under the supervision of HOD Rajesh Kumar. The observation\nwas recorded on 31/05/2026 and the total duration of the inspection was 2 Hours. During the visit, minor oil\nleakage was observed near the conveyor gearbox and housekeeping improvements were recommended. The\nmaintenance team was informed and corrective actions were initiated.\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "under the Utility department. The inspection was",
+    "departmentDisplay": ". The inspection was",
+    "sectionDisplay": "under the supervision of HOD Rajesh Kumar. The observation",
+    "hod": "Rajesh Kumar. The observation",
+    "nameObserver": "Ashutosh Sahu",
+    "duration": "of the inspection was 2 Hours. During the visit, minor oil"
+  }
+}

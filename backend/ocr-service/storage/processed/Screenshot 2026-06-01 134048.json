@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 134048.pdf",
+  "extracted_text": "\n--- Page 1 ---\nObserver Name: Ashu\n\nSO Date: 30/05/2026\n\nUnit: Barbil\n\nDepartment: Business Excellence\nHOD Name: Pradeep Vakhulabha\nVisited Section: Operation\n\nDuration: 55 Minutes\n\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "pdf",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Barbil",
+    "departmentDisplay": "Business Excellence",
+    "sectionDisplay": "Operation",
+    "hod": "Pradeep Vakhulabha",
+    "nameObserver": "Ashu",
+    "siDate": "30/05/2026",
+    "duration": "55 Minutes"
+  }
+}

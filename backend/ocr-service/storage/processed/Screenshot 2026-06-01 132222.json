@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 132222.png",
+  "extracted_text": "Here's the form data written out as a sentence:\n\nUnit Name: Angul | Department: Utility | Visited Section: Mechanical | HOD Name:\nShankara Narayana | SO Date: 2026-05-31 | Duration: 120 | Name of Observer: Ashutosh\nSahu\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Angul | Department: Utility | Visited Section: Mechanical | HOD Name:",
+    "departmentDisplay": "Utility | Visited Section: Mechanical | HOD Name:",
+    "sectionDisplay": "Mechanical | HOD Name:",
+    "hod": ":",
+    "nameObserver": "Ashutosh",
+    "siDate": "2026-05-31 | Duration: 120 | Name of Observer: Ashutosh",
+    "duration": "120 | Name of Observer: Ashutosh"
+  }
+}

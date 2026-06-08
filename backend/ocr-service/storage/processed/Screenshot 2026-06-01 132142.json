@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 132142.png",
+  "extracted_text": "A safety observation was conducted at the Angul unit under the Utility department,\nvisiting the Mechanical section. The HOD is Shankara Narayana, and the\nobservation was carried out by Ashutosh Sahu on 31st May 2026 with a duration of\n120 minutes.\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "under the Utility department,",
+    "departmentDisplay": ",",
+    "sectionDisplay": ". The HOD is Shankara Narayana, and the",
+    "hod": "is Shankara Narayana, and the",
+    "duration": "of"
+  }
+}

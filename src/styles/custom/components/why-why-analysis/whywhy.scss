@@ -1,0 +1,223 @@
+:root {
+    --light-bg: #e0e7ff;
+    --node-bg: linear-gradient(145deg, #ffffff, #f0f4f8);
+    --node-border: #cbd5e1;
+    --accent-color: #4f46e5;
+    --accent-glow: 0 0 15px rgba(79, 70, 229, 0.4);
+    --text-color: #334155;
+    --text-muted: #64748b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --danger-glow: 0 0 15px rgba(239, 68, 68, 0.5);
+    --success-glow: 0 0 15px rgba(34, 197, 94, 0.5);
+    --font-family: "Poppins", sans-serif;
+}
+
+.why-why-container {
+    font-family: var(--font-family);
+    background-color: var(--light-bg);
+}
+
+.why-node-card {
+    padding: 16px;
+    border: 1px solid var(--node-border);
+    border-radius: 12px;
+    background: var(--node-bg);
+    color: var(--text-color);
+    width: 250px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    // SCSS Nesting for hover states
+    &:not(:has(.node-actions button:hover)):hover {
+        box-shadow: var(--accent-glow);
+        border-color: var(--accent-color);
+    }
+
+    &:has(.btn-delete:hover) {
+        border-color: var(--danger-color);
+        box-shadow: var(--danger-glow);
+    }
+
+    &:has(.btn-conclude:hover) {
+        border-color: var(--success-color);
+        box-shadow: var(--success-glow);
+    }
+}
+
+// Targeting ReactFlow's dynamic classes
+.react-flow__node {
+
+    &.discard-hover .why-node-card,
+    &.is-discarded .why-node-card {
+        border-color: var(--danger-color);
+        box-shadow: var(--danger-glow);
+    }
+}
+
+.node-textarea,
+.node-select {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #f8fafc;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: var(--accent-glow);
+    }
+}
+
+.node-textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+.node-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: #e2e8f0;
+        border: none;
+        border-radius: 50%;
+        color: var(--text-color);
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+
+        img {
+            width: 18px;
+            height: 18px;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: var(--accent-glow);
+        }
+    }
+
+    // Modifier classes for buttons
+    .btn-add {
+        background-color: var(--accent-color);
+        color: white;
+
+        &:hover {
+            background-color: #6366f1;
+        }
+    }
+
+    .btn-conclude {
+        background-color: var(--success-color);
+        color: white;
+
+        &:hover {
+            background-color: #4ade80;
+        }
+    }
+
+    .btn-delete,
+    .btn-discard {
+        background-color: var(--danger-color);
+        color: white;
+
+        &:hover {
+            background-color: #f87171;
+        }
+    }
+}
+
+.panel-button {
+    background-color: #ffffff;
+    color: var(--text-color);
+    border: 1px solid var(--node-border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background-color: #f0f4f8;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}
+
+// Targeting React Flow internal elements
+.react-flow {
+    &__handle {
+        background: var(--accent-color) !important;
+        border: none !important;
+        width: 10px !important;
+        height: 10px !important;
+        box-shadow: var(--accent-glow) !important;
+    }
+
+    &__controls button {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid var(--node-border) !important;
+        color: var(--text-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #f0f4f8 !important;
+        }
+    }
+
+    &__minimap {
+        background-color: #ffffff !important;
+        border: 1px solid var(--node-border);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &__panel {
+        display: flex;
+        gap: 10px;
+
+        h3 {
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--node-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &__background {
+        background-color: var(--light-bg) !important;
+    }
+
+    &__edge-path {
+        stroke: var(--accent-color);
+        transition: stroke 0.3s ease;
+    }
+
+    &__marker-end {
+        fill: var(--accent-color);
+        transition: fill 0.3s ease;
+    }
+}

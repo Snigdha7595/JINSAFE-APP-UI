@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 132928.png",
+  "extracted_text": "Observer Name: Ashutosh\n\nSO Date: 26/05/2026\n\nUnit: Barbil\n\nDepartment: Information Technology\nHOD Name: Gajanan V Ashtekar\nVisited Section: Operations\nDuration: 2 Hours\n\nDuring the safety observation, multiple workstation cables were found hanging below\nemployee desks. Some employees were working with overloaded extension boards which\nmay lead to electrical hazards. Immediate cable management and proper power distribution\nwere recommended.\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Barbil",
+    "departmentDisplay": "Information Technology",
+    "sectionDisplay": "Operations",
+    "hod": "Gajanan V Ashtekar",
+    "nameObserver": "Ashutosh",
+    "siDate": "26/05/2026",
+    "duration": "2 Hours"
+  }
+}

@@ -1,0 +1,27 @@
+@use "../../../core/mixins" as *;
+@use "../../../core/variables" as *;
+.gc {
+    $self: &;
+    &.d3 {
+      #{$self} {
+        &__content {
+          font-size: $font14;
+          line-height: 1.3;
+          @include fontBase(var(--fontRegular));
+          color: var(--themeClr3);
+  
+          @include mq(tablet) {
+            font-size: $font16;
+          }
+  
+          @include mq(desktop-min) {
+            font-size: $font18;
+          }
+          &.black-text{
+            color: var(--black);
+          }
+        }
+      }
+    }
+  }
+  

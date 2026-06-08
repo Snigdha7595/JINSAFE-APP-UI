@@ -1,0 +1,207 @@
+# cloudbuild.yaml — Next.js → Cloud Run (via GitHub trigger)
+# Trigger: connect your GitHub repo to Cloud Build and point the trigger at this file.
+# Requirements:
+#  - Artifact Registry repo exists (name = $_REPO, location = $_REGION)
+#  - Dockerfile at repo root (see note below)
+#  - package.json has "start" that listens on PORT (Cloud Run uses 8080)
+
+substitutions:
+  # Customize these in your trigger UI (or keep these sensible defaults)
+  _SERVICE: "jinsafeapp-cr"
+  _REGION: "asia-south1"
+  _NETWORK: "prod-vpc"
+  _SUBNET: "prod-low-aap"
+  _AR_REGION: "asia-south1"
+  _AR_REPOSITORY: "jinsafe-repos" # Artifact Registry repo name (NOT the GitHub repo)
+  _ENV: prod   # <-- change per trigger: staging | prod
+  _NODE_VERSION: "22"
+
+  # ====== STAGING ======
+  _STAGE_NEXT_PUBLIC_BASE_URL: "https://jinsafeapp-dev-api.jindalsteel.com:5165"
+  _STAGE_NEXT_PUBLIC_X_API_KEY: "ob1TqwXy52R5D75DTCHlTBNBxoug9YZ7eBx5IB31GYfPGpHUhlpQHnrtkyl3hDy2"
+  _STAGE_API_TOKEN: ""
+  _STAGE_REQUEST_ENCRYPTION: "false"
+  _STAGE_NEXT_PUBLIC_API_PROXY_URL: "http://localhost:3000"
+  _STAGE_NEXT_PUBLIC_BUCKET_BASE_URL: "https://storage.googleapis.com/nonsap-app-dev-bucket"
+  _STAGE_NODE_ENV: "production"
+  _STAGE_PORT: "8080"
+  _STAGE_NEXT_PUBLIC_GOOGLE_CLIENT_ID: "788913269048-r9aifhosoi207abbtguien4mj6f7ld6r.apps.googleusercontent.com"
+  _STAGE_GOOGLE_CLIENT_ID: "788913269048-r9aifhosoi207abbtguien4mj6f7ld6r.apps.googleusercontent.com"
+
+  # ====== PRODUCTION ======
+  _PROD_NEXT_PUBLIC_BASE_URL: "https://jindalsteel-jinsafe-api.jindalsteel.com"
+  _PROD_NEXT_PUBLIC_X_API_KEY: "ob1TqwXy52R5D75DTCHlTBNBxoug9YZ7eBx5IB31GYfPGpHUhlpQHnrtkyl3hDy2"
+  _PROD_API_TOKEN: ""
+  _PROD_REQUEST_ENCRYPTION: "false"
+  _PROD_NEXT_PUBLIC_API_PROXY_URL: "http://localhost:3000"
+  _PROD_NEXT_PUBLIC_BUCKET_BASE_URL: "https://storage.googleapis.com/jinsafe-app-bucket"
+  _PROD_NODE_ENV: "production"
+  _PROD_PORT: "8080"
+  _PROD_NEXT_PUBLIC_GOOGLE_CLIENT_ID: "788913269048-r9aifhosoi207abbtguien4mj6f7ld6r.apps.googleusercontent.com"
+  _PROD_GOOGLE_CLIENT_ID: "788913269048-r9aifhosoi207abbtguien4mj6f7ld6r.apps.googleusercontent.com"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  dynamic_substitutions: true
+
+images:
+  - ${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_SERVICE}:$SHORT_SHA
+
+steps:
+  # 1) Write .env.production.local for Next build based on _ENV
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: Build env file
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        echo "Selected environment: ${_ENV}"
+
+        if [[ "${_ENV}" == "staging" ]]; then
+          BASE_URL="${_STAGE_NEXT_PUBLIC_BASE_URL}"
+          X_API_KEY="${_STAGE_NEXT_PUBLIC_X_API_KEY}"
+          API_TOKEN="${_STAGE_API_TOKEN}"
+          REQUEST_ENCRYPTION="${_STAGE_REQUEST_ENCRYPTION}"
+          API_PROXY_URL="${_STAGE_NEXT_PUBLIC_API_PROXY_URL}"
+          BUCKET_BASE_URL="${_STAGE_NEXT_PUBLIC_BUCKET_BASE_URL}"
+          NODE_ENV_VAL="${_STAGE_NODE_ENV}"
+          PORT_VAL="${_STAGE_PORT}"
+          GOOGLE_CLIENT_ID_PUBLIC="${_STAGE_NEXT_PUBLIC_GOOGLE_CLIENT_ID}"
+          GOOGLE_CLIENT_ID_SERVER="${_STAGE_GOOGLE_CLIENT_ID}"
+        else
+          BASE_URL="${_PROD_NEXT_PUBLIC_BASE_URL}"
+          X_API_KEY="${_PROD_NEXT_PUBLIC_X_API_KEY}"
+          API_TOKEN="${_PROD_API_TOKEN}"
+          REQUEST_ENCRYPTION="${_PROD_REQUEST_ENCRYPTION}"
+          API_PROXY_URL="${_PROD_NEXT_PUBLIC_API_PROXY_URL}"
+          BUCKET_BASE_URL="${_PROD_NEXT_PUBLIC_BUCKET_BASE_URL}"
+          NODE_ENV_VAL="${_PROD_NODE_ENV}"
+          PORT_VAL="${_PROD_PORT}"
+          GOOGLE_CLIENT_ID_PUBLIC="${_PROD_NEXT_PUBLIC_GOOGLE_CLIENT_ID}"
+          GOOGLE_CLIENT_ID_SERVER="${_PROD_GOOGLE_CLIENT_ID}"
+        fi
+
+        # Generate .env.production.local for Next.js build (client + server at build time)
+        # IMPORTANT: use $$ to escape $ so Cloud Build doesn't misread them
+        printf "%s\n" \
+          "NEXT_PUBLIC_BASE_URL=$$BASE_URL" \
+          "NEXT_PUBLIC_X_API_KEY=$$X_API_KEY" \
+          "# Prefer making this server-only; see notes below" \
+          "NEXT_PUBLIC_API_TOKEN=$$API_TOKEN" \
+          "REQUEST_ENCRYPTION=$$REQUEST_ENCRYPTION" \
+          "NEXT_PUBLIC_API_PROXY_URL=$$API_PROXY_URL" \
+          "NEXT_PUBLIC_BUCKET_BASE_URL=$$BUCKET_BASE_URL" \
+          "NODE_ENV=$$NODE_ENV_VAL" \
+          "PORT=$$PORT_VAL" \
+          "NEXT_PUBLIC_GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID_PUBLIC" \
+          "GOOGLE_CLIENT_ID=$$GOOGLE_CLIENT_ID_SERVER" \
+          > .env.production.local
+        
+        echo "Wrote .env.production.local"
+        
+  # 2) Write a minimal Dockerfile (no ${PORT_VAL} to avoid Cloud Build substitutions issue)
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: write-dockerfile
+    entrypoint: bash
+    args:
+      - -ceu
+      - |
+        cat > Dockerfile <<'EOF'
+        # ---------- Build stage ----------
+        FROM node:20-alpine AS builder
+        WORKDIR /app
+  
+        # Install deps
+        COPY package*.json ./
+        
+        RUN ls -la
+        RUN test -f package-lock.json && echo "LOCKFILE PRESENT" || (echo "NO LOCKFILE" && exit 1)
+
+        RUN npm ci --no-audit --no-fund
+  
+        # Copy source and build (requires next.config.js: output: 'standalone')
+        COPY . .
+        ENV NEXT_TELEMETRY_DISABLED=1
+        RUN npm run build
+  
+        # ---------- Runtime stage ----------
+        FROM node:20-alpine AS runner
+        WORKDIR /app
+        ENV NODE_ENV=production
+        # Cloud Run injects $$PORT; default to 8080 for local runs
+        # ENV PORT=8080
+  
+        # Copy the standalone server and static assets produced by Next.js
+        COPY --from=builder /app/.next ./.next
+        COPY --from=builder /app/public ./public
+        COPY --from=builder /app/package.json ./package.json
+        COPY --from=builder /app/node_modules ./node_modules
+        COPY --from=builder /app/next.config.ts ./next.config.ts
+  
+        EXPOSE 8080
+        CMD ["node","node_modules/next/dist/bin/next","start","-p", "8080", "-H", "0.0.0.0"]
+        EOF
+
+  # 3) Write a minimal Dockerignorefile
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: write-dockerignore
+    entrypoint: bash
+    args:
+      - -ceu
+      - |
+        cat > .dockerignore <<'EOF'
+        node_modules
+        .next/cache
+        .git
+        functions
+        !.env.production.local
+        .env
+        .env.development
+        .env.test
+        Dockerfile
+        .dockerignore
+        EOF
+  # 4) Build the container image (Dockerfile-based build)
+  - name: gcr.io/cloud-builders/docker
+    id: Build image
+    args: [ "build", "-t", "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_SERVICE}:$SHORT_SHA", "." ]
+    env: [ "DOCKER_BUILDKIT=1" ]
+
+  # 5) Push to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    id: Push image
+    args: [ "push", "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_SERVICE}:$SHORT_SHA" ]
+
+  # 6) Deploy to Cloud Run (fully managed)
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: Deploy
+    entrypoint: bash
+    args:
+      - -ceu
+      - |
+        # Choose secret prefix from environment (staging/prod)
+        if [[ "${_ENV}" == "staging" ]]; then
+          SECRET_PREFIX="jinsafeapp_ui_staging"      # <-- create these staging secrets
+        else
+          SECRET_PREFIX="jinsafeapp_ui_prd"
+        fi
+
+        # Build the --set-secrets payload (ENV_NAME=secretId:version)          
+        gcloud run deploy "${_SERVICE}" \
+          --image "${_AR_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_SERVICE}:$SHORT_SHA" \
+          --region "${_REGION}" \
+          --network "${_NETWORK}" \
+          --subnet "${_SUBNET}" \
+          --platform managed \
+          --allow-unauthenticated \
+          --port 8080 \
+          --update-secrets "NEXT_PUBLIC_BASE_URL=$${SECRET_PREFIX}_public_base_url:latest" \
+          --update-secrets "NEXT_PUBLIC_X_API_KEY=$${SECRET_PREFIX}_public_x_api_key:latest" \
+          --update-secrets "NEXT_PUBLIC_API_TOKEN=$${SECRET_PREFIX}_api_token:latest" \
+          --update-secrets "REQUEST_ENCRYPTION=$${SECRET_PREFIX}_request_encryption:latest" \
+          --update-secrets "NEXT_PUBLIC_API_PROXY_URL=$${SECRET_PREFIX}_public_api_proxy_url:latest" \
+          --update-secrets "NEXT_PUBLIC_BUCKET_BASE_URL=$${SECRET_PREFIX}_public_bucket_base_url:latest" \
+          --update-secrets "NODE_ENV=$${SECRET_PREFIX}_node_env:latest" \
+          --update-secrets "NEXT_PUBLIC_GOOGLE_CLIENT_ID=$${SECRET_PREFIX}_public_google_client_id:latest" \
+          --update-secrets "GOOGLE_CLIENT_ID=$${SECRET_PREFIX}_google_client_id:latest" \

@@ -1,0 +1,86 @@
+@use '../../../core/mixins' as *;
+@use '../../../core/variables' as *;
+
+.form_grider {
+    $self: &;
+
+    &.d2 {
+        #{$self} {
+            &_wrap {
+                @include flexbox;
+                @include flex-direction(column, vertical);
+                margin-bottom: 25px;
+                position: relative;
+
+                &.checkbox_field {
+                    .form_grider_wrap_label {
+                        margin-bottom: 10px;
+                    }
+
+                    .checkbox_container {
+                        input[type='checkbox']+label {
+                            display: inline-block;
+                            cursor: pointer;
+                            position: relative;
+                            padding-left: 30px;
+                            margin-right: 15px;
+                            font-size: $font14;
+                            color: var(--themeTextTertiary);
+                            line-height: 1.6;
+                            @include fontBase(var(--fontMedium));
+
+                            &:before {
+                                content: '';
+                                display: block;
+                                @include size(20px);
+                                margin-right: 15px;
+                                position: absolute;
+                                top: -15px;
+                                left: 14px;
+                                border: 2px solid var(--themeClr5);
+                                background-color: var(--white);
+                                @include border-radius(5px);
+                            }
+                        }
+
+                        input[type='checkbox'] {
+                            display: none !important;
+
+                            &:checked+label {
+                                &:before {
+                                    border-color: var(--themeBg3);
+                                    background-color: var(--themeBg3);
+                                }
+
+                                &:after {
+                                    content: '✔';
+                                    font-size: $font14;
+                                    line-height: 20px;
+                                    color: var(--white);
+                                    display: block;
+                                    position: absolute;
+                                    top: -15px;
+                                    left: 14px;
+                                    width: 20px;
+                                    height: 20px;
+                                    border-radius: 3px;
+                                }
+                            }
+
+                            &:disabled+label {
+                                pointer-events: none;
+                                opacity: 0.6;
+
+                                &:before {
+                                    background-color: var(--themeClr2);
+                                    border-color: var(--themeClr2);
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

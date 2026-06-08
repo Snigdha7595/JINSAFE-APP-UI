@@ -1,0 +1,5 @@
+{
+    "snyk.advanced.organization": "d393f5db-a6c4-4b5c-9bf1-757934af8244",
+    "snyk.advanced.autoSelectOrganization": true,
+    "git.ignoreLimitWarning": true
+}

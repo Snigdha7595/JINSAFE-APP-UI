@@ -1,0 +1,127 @@
+/* Begin core files */
+@use "vendors/bootstrap.min";
+@use "custom/core/variables" as *;
+@use "custom/core/mixins" as *;
+@use "custom/core/typography";
+/* End core files */
+
+/* Begin helper files */
+@use "custom/helpers/basics";
+@use "custom/helpers/buttons";
+/* End helper files */
+
+/* Begin layout files */
+@use "custom/layout/header";
+@use "custom/layout/footer";
+@use "custom/layout/layout";
+//@use 'custom/layout/sidebar';
+@use "custom/layout/dashheader";
+
+@use "custom/components/_partials/boxContainer";
+@use "custom/components/_partials/navigation";
+@use "custom/components/_partials/pagination";
+@use "custom/components/_partials/accordion";
+@use "custom/components/basic/basic";
+@use "custom/components/heading/heading";
+@use "custom/components/generic-content/gc";
+@use "custom/components/table/table";
+@use "custom/components/form/form";
+@use 'custom/components/toggleSwitch'; 
+/* End layout files */
+
+.admin-mainContainer {
+  &.sidebar_collapsed {
+    .admin-mainContainer_panel {
+      @include mq(tablet-wide) {
+        @include calc(width, "100% - 102px");
+        margin-left: 102px;
+      }
+    }
+    .fixedPanel {
+      width: calc(100% - 0px);
+      margin-left: 0px;
+    }
+    .admin-sidebar {
+      .admin-sidebar_arrowIcon {
+        svg {
+          @include size(20px);
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          color: var(--white);
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+.sidebar_collapsed {
+  .admin-mainContainer_panel {
+    .admin-mainContainer_container {
+      padding-left: 40px;
+    }
+  }
+}
+
+// New CSS Start ----------------
+
+.scrollable-container {
+  // background-color: yellow;
+  max-height: 500px; /* or whatever height fits your layout */
+  overflow-y: auto;
+  padding-right: 8px; /* optional, improves scrollbar appearance */
+}
+
+.step-btn {
+  font-size: 1.1rem;
+  min-width: 50px;
+  height: 50px;
+  background-color: #6c757d; /* orange */
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.step-btn:hover {
+  background-color: #fd7e14; /* grey */
+}
+
+.active-step {
+  box-shadow: 0 0 0 3px #fd7e14; /* subtle focus */
+}
+
+.flipped-icon {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 576px) {
+  .step-btn {
+    min-width: 40px;
+    font-size: 1rem;
+    height: 45px;
+  }
+}
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e9b02af5; /* grey */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+.green-circle{
+   width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #58ab40; /* grey */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+// New CSS End ----------------

@@ -1,0 +1,52 @@
+@use "../../../core/mixins" as *;
+@use "../../../core/variables" as *;
+.hw {
+  $self: &;
+  &.d4 {
+    @include fontBase(var(--fontLight));
+    #{$self} {
+      &__title {
+        font-size: $font24;
+        color: var(--themeClr1);
+        line-height: 1.2;
+
+        @include mq(desktop-wide) {
+          font-size: $font32;
+        }
+
+        span {
+          @include fontBase(var(--fontBolder));
+        }
+      }
+      &__subtitle {
+        font-size: $font18;
+        margin-top: 10px;
+        @include inline-flex;
+        @include mq(desktop-wide-max) {
+          font-size: $font20;
+        }
+
+        &.orange-bg {
+          background-color: var(--themeBg3);
+          color: var(--white);
+          padding: 3px 10px;
+        }
+      }
+    }
+
+    &.bold {
+      #{$self} {
+        &__title {
+          @include fontBase(var(--fontBold));
+        }
+      }
+    }
+    &.medium-bold {
+      #{$self} {
+        &__title {
+          @include fontBase(var(--fontMedium));
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 130447.png",
+  "extracted_text": "O Edit\n\nSafety Observation Report\n\nObserver Name: Ashutosh Sahu\n\nUnit Name: Angul\n\nDepartment: Mechanical\n\nVisited Section: Conveyor Maintenance Area\nHOD Name: Rajesh Kumar\n\nSO Date: 31/05/2026\n\nDuration: 2 Hours\n\nDuring the inspection, oil leakage was observed\nnear the conveyor gearbox. Safety guards were\nmissing on rotating equipment, creating a\n\npotential hazard for maintenance personnel.\nCorrective actions were recommended immediately.\n\nic\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "Angul",
+    "departmentDisplay": "Mechanical",
+    "sectionDisplay": "Conveyor Maintenance Area",
+    "hod": "Rajesh Kumar",
+    "nameObserver": "Ashutosh Sahu",
+    "siDate": "31/05/2026",
+    "duration": "2 Hours"
+  }
+}

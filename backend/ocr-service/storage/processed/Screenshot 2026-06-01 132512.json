@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 132512.png",
+  "extracted_text": "A safety observation was conducted at the Barbil unit under the Information\nTechnology department, visiting the Operations section. The HOD is Gajanan V\nAshtekar, and the observation was carried out by Ashutosh on 26th May 2026 witha\nduration of 120 minutes.\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {
+    "unitDisplay": "under the Information",
+    "departmentDisplay": ", visiting the Operations section. The HOD is Gajanan V",
+    "sectionDisplay": ". The HOD is Gajanan V",
+    "hod": "is Gajanan V",
+    "duration": "of 120 minutes."
+  }
+}

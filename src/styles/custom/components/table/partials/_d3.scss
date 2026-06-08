@@ -1,0 +1,209 @@
+@use "../../../core/mixins" as *;
+@use "../../../core/variables" as *;
+.admin-table {
+  &.d3 {
+    // margin-top: 10px;
+
+    // table, th, td {
+    //   border: 1px solid var(--darkGrey);
+    // }
+
+    .u-icon {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+    }
+    .table {
+      margin-bottom: 20px !important;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+
+
+      thead tr th {
+        border-right: 1px solid var(--light-grey2);
+        padding: 15px 0px;
+        min-width:100px;  
+      
+      }
+
+      thead tr th:last-child {
+        border-right: 0px;
+      }
+
+       tbody tr td {
+        border-right: 1px solid var(--light-grey2);
+        padding: 10px;
+       }
+
+       tbody tr td:last-child {
+        border-right: 0px;
+       }
+
+      thead {
+        background-color: var(--light-blue);
+       
+      }
+
+      th {
+        color: var(--darkGrey) !important;
+      }
+
+       tr th {
+        color: var(--white);
+        // min-width: 150px;
+        @include fontBase(var(--fontMedium));
+        text-align: center;
+        overflow: hidden;
+      
+      }
+
+      /* Apply border-radius to top corners */
+      // thead th:first-child {
+      //   border-top-left-radius: 10px;
+      // }
+      // thead th:last-child {
+      //   border-top-right-radius: 10px;
+      // }
+
+      tr:hover td {
+        background-color: var(--themeClr6);
+        cursor: pointer;
+      }
+      .no-hover:hover td {
+        background: none;
+        cursor: default;
+      }
+      // tr:last-child:hover td {
+      //   background: var(--themeClr2);
+      //   cursor: default;
+      // }
+      // tr:last-child td {
+      //   background: var(--themeClr2);
+      //   color: var(--white);
+      // }
+
+      tr.highlighter {
+        &:hover {
+          td {
+            background: var(--themeClr2);
+            cursor: default;
+          }
+        }
+        td {
+          background: var(--themeClr2);
+          cursor: default;
+          color: var(--white);
+        }
+      }
+      tr.light-highlighter {
+        &:hover {
+          td {
+            background: var(--themeClr4);
+            cursor: default;
+          }
+        }
+        td {
+          background: var(--themeClr4);
+          cursor: default;
+          color: var(--white);
+        }
+      }
+
+      thead tr:first-child,
+      thead tr:first-child th {
+        background-color: var(--themeBg2);
+      }
+
+      // thead tr:first-child,
+      // thead tr:first-child th:first-child {
+      //   min-width: 90px;
+      // }
+      thead tr:first-child,
+      thead tr:first-child th:nth-child(2) {
+        // min-width: 200px;
+      }
+
+      thead tr:nth-child(2),
+      thead tr:nth-child(2) th {
+        background-color: #046aa7;
+        border-radius: 0px;
+      }
+      thead tr:nth-child(3),
+      thead tr:nth-child(3) th {
+        background-color: #024268;
+        border-radius: 0px;
+      }
+
+      td {
+        text-align: center;
+        vertical-align: middle;
+        // border: 1px solid var(--darkGrey);
+        color: var(--darkGrey);
+        @include mq(tablet-max) {
+          padding:0px;
+        }
+        
+      }
+
+      .sticky-header th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        @media screen and (max-width: 767px) {
+          position: inherit;
+        }
+      }
+
+      .sticky-column {
+        position: sticky;
+        z-index: 0;
+        @media screen and (max-width: 767px) {
+          position: inherit;
+        }
+      }
+
+      .col-one {
+        left: 0;
+      }
+
+      .col-two {
+        left: 90px;
+      }
+
+      .no-border {
+        border: none;
+      }
+
+      .table th.sticky-column,
+      .table td.sticky-column {
+        z-index: 3; /* Ensure it appears above other sticky elements */
+      }
+    }
+    &.noHover {
+      tbody {
+        tr {
+          &:hover td {
+            background: none;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}
+
+.formTable {
+  &__title {
+    font-size: var(--fontSize24);
+    color: var(--darkGrey);
+    font-weight: 700;
+  }
+}
+
+.btnWrapper {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(end);
+  gap: 10px;
+}

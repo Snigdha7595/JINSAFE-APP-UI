@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-01 134300.png",
+  "extracted_text": "Details of Observation: Loose electrical wires found near the workstation area\nExact Location: Server Room, Ground Floor\n\nType: Unsafe Condition\n\nCategory: Electrical Safety\n\nSubCategory: Wiring & Cables\n\nSub-SubCategory: Exposed Live Wires\n",
+  "observations": [],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1,
+    "unit_details": {}
+  },
+  "field_mappings": {}
+}

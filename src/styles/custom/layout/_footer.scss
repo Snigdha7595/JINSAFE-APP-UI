@@ -1,0 +1,13 @@
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+.admin-footer {
+  background:var(--white);
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  padding:15px;
+  &__title {
+    color:var(--darkGrey);
+  }
+}

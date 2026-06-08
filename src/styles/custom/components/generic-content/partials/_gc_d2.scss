@@ -1,0 +1,26 @@
+// .gc {
+//   $self: &;
+//   &.d1 {
+//     #{$self} {
+//       &__content {
+//         font-size: $font16;
+//         line-height: 1.2;
+//         @include fontBase(var(--fontRegular));
+        
+//         color: var(--white);
+
+//         @include mq(tablet) {
+//           font-size: $font14;
+//         }
+
+//         @include mq(desktop-min) {
+//           font-size: $font16;
+//         }
+//         &.black-text{
+//           color: var(--black);
+//         }
+      
+//       }
+//     }
+//   }
+// }

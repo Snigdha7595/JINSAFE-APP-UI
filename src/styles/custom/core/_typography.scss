@@ -1,0 +1,205 @@
+@use "variables" as *;
+@use "mixins" as *;
+body {
+  @include size(100%);
+  overscroll-behavior-y: none;
+  scrollbar-width: thin;
+  overscroll-behavior-y: none;
+  background-color: var(--white);
+  font-size: $font14;
+  font-family: var(--font-primary);
+
+  * {
+    @extend .scrollBar-smallWidth;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  @include transition(all 0.5s ease);
+
+  &:hover {
+    color: var(--lightBlue);
+  }
+}
+ul li,
+ol li,
+ul,
+ol {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.custom_container {
+  @include mq('desktop-wide-max') {
+    max-width:1550px;
+  }
+}
+
+.scrollBar-smallWidth {
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+    @include border-radius(10px);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    @include border-radius(10px);
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+
+/* Begin Animation key frames */
+
+@keyframes leftToRightAnimate {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -550px 0;
+    }
+}
+
+
+// /* Thin */
+// @font-face {
+//   font-family: 'PoppinsThin';
+//   src: url('../fonts/PoppinsThin.eot');
+//   src: url('../fonts/PoppinsThin.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsThin.woff2') format('woff2'),
+//        url('../fonts/PoppinsThin.woff') format('woff'),
+//        url('../fonts/PoppinsThin.ttf') format('truetype'),
+//        url('../fonts/PoppinsThin.svg#PoppinsThin') format('svg');
+// }
+
+// .pf-thin {
+//   font-family: 'PoppinsThin';
+// }
+
+
+// /* Light */
+// @font-face {
+//   font-family: 'PoppinsLight';
+//   src: url('fonts/PoppinsLight.eot');
+//   src: url('fonts/PoppinsLight.eot') format('embedded-opentype'),
+//        url('fonts/PoppinsLight.woff2') format('woff2'),
+//        url('fonts/PoppinsLight.woff') format('woff'),
+//        url('fonts/PoppinsLight.ttf') format('truetype'),
+//        url('fonts/PoppinsLight.svg#PoppinsLight') format('svg');
+// }
+// .pf-light {
+//   font-family: 'PoppinsLight';
+// }
+
+
+// /* Regular */
+// @font-face {
+//   font-family: 'PoppinsRegular';
+//   src: url('../fonts/PoppinsRegular.eot');
+//   src: url('../fonts/PoppinsRegular.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsRegular.woff2') format('woff2'),
+//        url('../fonts/PoppinsRegular.woff') format('woff'),
+//        url('../fonts/PoppinsRegular.ttf') format('truetype'),
+//        url('../fonts/PoppinsRegular.svg#PoppinsRegular') format('svg');
+// }
+// .pf-regular {
+//   font-family: 'PoppinsRegular';
+// }
+
+
+
+
+// /* Medium */
+// @font-face {
+//   font-family: 'PoppinsMedium';
+//   src: url('../fonts/PoppinsMedium.eot');
+//   src: url('../fonts/PoppinsMedium.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsMedium.woff2') format('woff2'),
+//        url('../fonts/PoppinsMedium.woff') format('woff'),
+//        url('../fonts/PoppinsMedium.ttf') format('truetype'),
+//        url('../fonts/PoppinsMedium.svg#PoppinsMedium') format('svg');
+// }
+// .pf-medium {
+//   font-family: 'PoppinsMedium';
+// }
+
+
+// /* SemiBold */
+// @font-face {
+//   font-family: 'PoppinsSemiBold';
+//   src: url('../fonts/PoppinsSemiBold.eot');
+//   src: url('../fonts/PoppinsSemiBold.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsSemiBold.woff2') format('woff2'),
+//        url('../fonts/PoppinsSemiBold.woff') format('woff'),
+//        url('../fonts/PoppinsSemiBold.ttf') format('truetype'),
+//        url('../fonts/PoppinsSemiBold.svg#PoppinsSemiBold') format('svg');
+// }
+// .pf-semibold {
+//   font-family: 'PoppinsSemiBold';
+// }
+
+
+// /* Bold */
+// @font-face {
+//   font-family: 'PoppinsBold';
+//   src: url('../fonts/PoppinsBold.eot');
+//   src: url('../fonts/PoppinsBold.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsBold.woff2') format('woff2'),
+//        url('../fonts/PoppinsBold.woff') format('woff'),
+//        url('../fonts/PoppinsBold.ttf') format('truetype'),
+//        url('../fonts/PoppinsBold.svg#PoppinsBold') format('svg');
+// }
+
+// .pf-bold {
+//   font-family: 'PoppinsBold';
+// }
+
+
+// /* Bold */
+// @font-face {
+//   font-family: 'PoppinsExtraBold';
+//   src: url('../fonts/PoppinsExtraBold.eot');
+//   src: url('../fonts/PoppinsExtraBold.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsExtraBold.woff2') format('woff2'),
+//        url('../fonts/PoppinsExtraBold.woff') format('woff'),
+//        url('../fonts/PoppinsExtraBold.ttf') format('truetype'),
+//        url('../fonts/PoppinsExtraBold.svg#PoppinsExtraBold') format('svg');
+// }
+// .pf-extrabold {
+//   font-family: 'PoppinsExtraBold';
+// }
+
+
+
+// /* Black */
+// @font-face {
+//   font-family: 'PoppinsBlack';
+//   src: url('../fonts/PoppinsBlack.eot');
+//   src: url('../fonts/PoppinsBlack.eot') format('embedded-opentype'),
+//        url('../fonts/PoppinsBlack.woff2') format('woff2'),
+//        url('../fonts/PoppinsBlack.woff') format('woff'),
+//        url('../fonts/PoppinsBlack.ttf') format('truetype'),
+//        url('../fonts/PoppinsBlack.svg#PoppinsBlack') format('svg');
+// }
+
+// .pf-black {
+//   font-family: 'PoppinsBlack';
+// }

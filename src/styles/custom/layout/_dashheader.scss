@@ -1,0 +1,48 @@
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+.adminLogin {
+  position: absolute;
+  right: 0;
+  background: var(--grey);
+  width: calc(100% - 312px);
+  padding: 15px 25px;
+  @include flexbox();
+  @include align-items(center);
+
+  &__icon {
+    .u-image {
+      width: 30px;
+    }
+  }
+  &__profile {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    position: absolute;
+    right: 30px;
+    &--action {
+      margin-right: 30px;
+      .list {
+        background: none;
+        border: none;
+        padding-right: 10px;
+        color: var(--grey2);
+      }
+    }
+
+    &--user {
+      @include flexbox();
+      @include align-items(center);
+      .media {
+        margin-right:10px;
+        .u-image {
+          width:35px;
+        }
+      }
+      .title {
+        color:var(--grey2);
+      }
+    }
+  }
+}
