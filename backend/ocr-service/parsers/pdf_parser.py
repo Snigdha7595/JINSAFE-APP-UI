@@ -6,13 +6,18 @@ from utils.ocr_engine import extract_text_from_image_bytes
 
 logger = logging.getLogger(__name__)
 
+POPPLER_PATH = r"C:\poppler\poppler-26.02.0\Library\bin"
+
 class PDFParser:
     """Parser for PDF files"""
     
     async def parse(self, file_content: bytes) -> Dict[str, Any]:
         """Parse PDF file and extract text"""
         try:
-            images = convert_from_bytes(file_content)
+            images = convert_from_bytes(
+                file_content,
+                poppler_path=POPPLER_PATH
+            )
             
             extracted_text = ""
             for page_num, image in enumerate(images):

@@ -4,6 +4,8 @@ import os
 import logging
 from typing import Any, Dict
 from PIL import Image
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 logger = logging.getLogger(__name__)
 

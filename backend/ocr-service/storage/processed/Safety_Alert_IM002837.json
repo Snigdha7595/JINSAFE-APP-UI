@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "filename": "Safety_Alert_IM002837.pdf",
+  "extracted_text": "\n--- Page 1 ---\nZER(DJHARM wpa”\n\nPir Id: IM002837 | Date & Time: 23-Apr-2026 09:30\nLocation: STOCK HOUSE | Type of Incident: Near miss case\n\nUnit: Angul | Department: Blast Furnace | Section: Mechanical\n\nWHAT HAPPENED\n\nAn individual slipped while navigating at stock house. The individual regained their balance/landed on the\nfloor but did not report any immediate physical pain, bleeding, or discomfort at the time of the event.\nPRELIMINARY FINDING\n\nWet/slick floor surface (spill or cleaning). Improper footwear for the environment. Uneven flooring or loose\n\nfloor mats.Poor lighting or obstructed view.\n\nPhotograhs\n\nNo images attached.\n\nIMMEDIATE ACTION\n\ne Signage: \"Wet Floor\" signs have been deployed [or mention if they were missing]. Maintenance:\n[e.g., The leak in the cooler has been reported for repair]. Awareness: A safety \"toolbox talk\" will be\nheld on [Date] to remind staff of proper spill reporting procedures.\n\nAction by:Navin Kumar\n\nThis alert is prepared for internal circulation.\n\nIM002837 - Page 1 of 1 © 2025 JINSAFE\n",
+  "observations": [
+    {
+      "observation_detail": "Slippery floor surface due to spill or cleaning, leading to a near-miss incident.",
+      "observation_type": "Unsafe Condition",
+      "observation_category": "Orderliness standard/ House Keeping",
+      "observation_subcategory": "Floor Maintenance",
+      "observation_subsubcategory": "",
+      "risk_potential": "Moderate",
+      "exact_location": "STOCK HOUSE | Type of Incident: Near miss case"
+    }
+  ],
+  "metadata": {
+    "file_type": "pdf",
+    "pages": 1
+  },
+  "field_mappings": {
+    "departmentDisplay": "Blast Furnace",
+    "sectionDisplay": "Mechanical",
+    "unitDisplay": "Angul | Department: Blast Furnace | Section: Mechanical",
+    "siDate": "& Time: 23-Apr-2026 09:30"
+  }
+}

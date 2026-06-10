@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "filename": "Screenshot 2026-06-09 124605.png",
+  "extracted_text": "",
+  "observations": [
+    {
+      "observation_detail": "The truck is parked in a way that it obstructs the view of the person working on the road. This can lead to accidents or injuries if the worker is not aware of the truck's presence.",
+      "observation_type": "Unsafe Condition",
+      "observation_category": "Tools and equipment",
+      "observation_subcategory": "Obstruction",
+      "observation_subsubcategory": "Vehicle obstructing view",
+      "risk_potential": "High",
+      "exact_location": "Roadside"
+    }
+  ],
+  "metadata": {
+    "file_type": "png",
+    "pages": 1
+  },
+  "field_mappings": {}
+}
